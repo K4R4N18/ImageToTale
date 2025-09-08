@@ -1,10 +1,10 @@
-#ImageToTale
+# ImageToTale 🎨📖
 
 Link : https://imagetotale.netlify.app/
 
 Image-to-Tale is a web-based project that transforms images into creative text stories. Users can upload an image, and the system generates a meaningful or imaginative tale based on the visual content.
 
-🚀 Features
+## 🚀 Features
 
 🖼️ Upload an image from your device.
 
@@ -14,7 +14,7 @@ Image-to-Tale is a web-based project that transforms images into creative text s
 
 ⚡ Simple, user-friendly interface.
 
-🎯 Objectives
+## 🎯 Objectives
 
 To design a user-friendly interface using HTML, CSS, and JavaScript.
 
@@ -26,7 +26,7 @@ To highlight AI-driven storytelling capabilities.
 
 To implement a clean navigation system with intuitive usability.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Frontend: HTML, CSS, JavaScript
 
