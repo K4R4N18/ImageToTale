@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #4CAF50, #2A5470);
+        }
+
+        .navbar{
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            background-color: black;
+        }
+        nav{
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5% 0 5%;
+        }
+        .logo-nav{
+            padding-top: 10px;
+            margin-top: 0;
+            color: #4a90e2;
+            font-size: 28px;
+        }
+        nav ul li {
+            
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover{
+            color: #4a90e2;
+            transition: .3s;
+        }
+
+
+        .login-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .input-field {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 12px 40px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field input:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        .input-field i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45A049;
+        }
+
+        .msg {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .signup-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <nav>
+            <h2 class="logo-nav">ImageToTale</h2>
+            <ul>
+                <li><a href="signup.html">SignUp</a></li>
+                <li><a href="landingPage.html">Home</a></li>
+                <li><a href="about (1).html">AboutUs</a></li>
+                <li><a href="contact.html">ContactUs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+            <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <p id="error-message" class="error"></p>
+        </form>
+        <p class="msg">Welcome back! Please enter your email and password to continue.</p>
+        <a href="signup.html" class="signup-link" id="signup-link" style="display: none;">Don't have an account? Sign up here!</a>
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const signupLink = document.getElementById('signup-link');
+
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            const user = registeredUsers.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                localStorage.setItem('loggedInUsername', user.username);
+                window.location.href = "index.html";
+            } else {
+                errorMessage.textContent = "Invalid email or password. Please try again.";
+                signupLink.style.display = "block";
+            }
+        }
+    </script> 
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

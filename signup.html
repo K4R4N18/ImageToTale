@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Mukta', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #007bbd, #005f8d);
+        }
+
+        .navbar{
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: black;
+            width: 100%;
+        }
+        nav{
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5% 0 5%;
+        }
+        .logo-nav{
+            padding-top: 10px;
+            margin-top: 0;
+            color: #4a90e2;
+            font-size: 28px;
+        }
+        nav ul li {
+            
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover{
+            color: #4a90e2;
+            transition: .3s;
+        }
+
+        .signup-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .input-field {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 14px;
+            border: 1px solid #007bbd;
+            border-radius: 30px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field input:focus {
+            border-color: #005f8d;
+            box-shadow: 0 0 5px rgba(0, 95, 141, 0.3);
+        }
+
+        .btn {
+            background-color: #007bbd;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #005f8d;
+        }
+
+        .msg {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        #success-message {
+            color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <nav>
+            <h2 class="logo-nav">ImageToTale</h2>
+            <ul>
+                <li><a href="login.html">LogIn</a></li>
+                <li><a href="landingPage.html">Home</a></li>
+                <li><a href="about (1).html">AboutUs</a></li>
+                <li><a href="contact.html">ContactUs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="signup-container">
+        <h2>Signup</h2>
+        <form onsubmit="signup(event)">
+            <div class="input-field">
+                <input type="text" id="signup-username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-field">
+                <input type="email" id="signup-email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-field">
+                <input type="password" id="signup-password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            <p id="error-message" class="error"></p>
+            <p id="success-message"></p>
+        </form>
+    </div>
+
+    <script>
+        function signup(event) {
+            event.preventDefault();
+            const username = document.getElementById('signup-username').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            if (registeredUsers.find(user => user.email === email)) {
+                document.getElementById('error-message').textContent = 'Email already registered. Please log in.';
+                return;
+            }
+
+            registeredUsers.push({ username, email, password });
+            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+            document.getElementById('success-message').textContent = 'Signup successful! Redirecting to login page.';
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

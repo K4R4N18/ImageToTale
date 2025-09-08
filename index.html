@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ImageToTale - Bring Your Images to Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+
+    <div class="navbar">
+        <nav>
+            <h2 class="logo-nav">ImageToTale</h2>
+            <ul>
+                <li><a href="signup.html">SignUp</a></li>
+                <li><a href="login.html">LogIn</a></li>
+                <li><a href="landingPage.html">Home</a></li>
+                <li><a href="about (1).html">AboutUs</a></li>
+                <li><a href="contact.html">ContactUs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+
+      <main class="main-content">
+        <div class="hero-section">
+          <h2 class="hero-title">
+            <span class="hero-gradient-text"> Every picture has a story. </span>
+          </h2>
+          <p class="hero-subtitle">
+            Upload your image and watch as we weave a unique narrative,
+            transforming your visual moments into captivating tales.
+          </p>
+        </div>
+
+        <div class="upload-component">
+          <div class="upload-inner">
+            <svg
+              class="upload-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0_0_24_24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12_16.5V9.75m0_0l-3.75_3.75M12_9.75l3.75_3.75M3_17.25V8.25c0-1.121.904-2.025_2.025-2.025h13.95A2.025_2.025_0_0121_8.25v9a2.025_2.025_0_01-2.025_2.025H5.025A2.025_2.025_0_013_17.25z"
+              />
+            </svg>
+
+            <label for="image-upload" class="upload-label">
+              <span>Drag & drop an image or</span>
+              <span class="upload-label-browse"> click to browse</span>
+              <input
+                id="image-upload"
+                name="image-upload"
+                type="file"
+                class="sr-only"
+              />
+            </label>
+            <p class="upload-hint">PNG, JPG, GIF up to 10MB</p>
+          </div>
+        </div>
+
+        <div class="generate-button-container">
+          <button type="button" class="generate-button">Generate Tale</button>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p class="footer-text">&copy; 2025 ImageToTale. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
